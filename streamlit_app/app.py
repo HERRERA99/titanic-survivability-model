@@ -1,13 +1,15 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import numpy as np
+from pathlib import Path
 
+# Construimos la ruta al modelo de forma robusta
+modelo_path = Path(__file__).parent / "model" / "modelo_titanic.pkl"
 
 # Cargar el modelo
 @st.cache_resource
 def cargar_modelo():
-    return joblib.load('model/modelo_titanic.pkl')
+    return joblib.load(modelo_path)
 
 
 try:
